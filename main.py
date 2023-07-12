@@ -12,7 +12,8 @@ def window(screen_width, screen_height, player_start_position_x, player_start_po
     # Sets the users display size 
     window = py.display.set_mode([screen_width,screen_height])
     
-    # Use the os module to find the actual path, then assign my_character to the image
+    # Use the os module to find the actual path, then assign my_character 
+    # to the image
     image_directory = os.path.expanduser("~/python-projects/pokemon-clone/assets/R.png")
     my_character = Character(image_directory)
 
@@ -41,8 +42,8 @@ def window(screen_width, screen_height, player_start_position_x, player_start_po
                 py.quit()
                 quit()
             
-            # Checks if user presses a key, moves the players x and y using velocity 
-            # with the respective key and direction
+            # Checks if user presses a key, moves the players x and y 
+            # using velocity with the respective key and direction
             key_pressed = py.key.get_pressed()
 
             if key_pressed[py.K_LEFT] or key_pressed[py.K_a]:
@@ -61,11 +62,14 @@ def window(screen_width, screen_height, player_start_position_x, player_start_po
     py.quit()
 
 def main():
-    player_x = 100
-    player_y = 100
-
+    # Prompts the user for their desired display size 
     display_width = int(input("Please enter your display width: "))
     display_height = int(input("Please enter your display height: "))
+    
+    # Initilizes the character at the center of the screen
+    player_x = display_width / 2
+    player_y = display_height / 2
+
     window(display_width,display_height, player_x, player_y)
 
 if __name__ == "__main__":
