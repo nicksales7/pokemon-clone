@@ -2,8 +2,13 @@ import os
 import pygame as py
 
 class Character:
-    def __init__(self, image_location):
+    def __init__(self, image_location, image_width, image_height):
+        # Adds attributes of width and height to a characters png image
         self.image = py.image.load(image_location)
+        self.image = py.transform.scale(self.image, (image_width, image_height))
+        self.rect = self.image.get_rect()
+        self.width = self.rect.width
+        self.height = self.rect.height
 
 def window(screen_width, screen_height, player_start_position_x, player_start_position_y):
     # Initialize the pygame window
@@ -14,8 +19,8 @@ def window(screen_width, screen_height, player_start_position_x, player_start_po
     
     # Use the os module to find the actual path, then assign my_character 
     # to the image
-    image_directory = os.path.expanduser("~/python-projects/pokemon-clone/assets/R.png")
-    my_character = Character(image_directory)
+    image_directory = os.path.expanduser("~/python-projects/pokemon-clone/assets/default-back.png")
+    my_character = Character(image_directory, 100, 100)
 
     #Stores the characters movement velocity
     velocity = 5
